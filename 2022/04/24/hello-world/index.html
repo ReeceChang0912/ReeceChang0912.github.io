@@ -157,43 +157,24 @@
 </nav>
 
         <div id="main" >
-            <div class ="post_page_title_img" style="height: 25rem;background-image: url(https://w.wallhaven.cc/full/5d/wallhaven-5d3297.jpg);background-position: center; background-repeat:no-repeat; background-size:cover;-moz-background-size:cover;overflow:hidden;" >
-                <a href="#" style="padding: 4rem 4rem 2rem 4rem ;"><h2 >Web Storage</h2></a>
+            <div class ="post_page_title_img" style="height: 25rem;background-image: url(https://w.wallhaven.cc/full/8o/wallhaven-8opw5k.jpg);background-position: center; background-repeat:no-repeat; background-size:cover;-moz-background-size:cover;overflow:hidden;" >
+                <a href="#" style="padding: 4rem 4rem 2rem 4rem ;"><h2 >Hello World</h2></a>
             </div>
             <!-- Post -->
             <div class="typo" style="padding: 3rem;">
-                <p>这里的内容极其容易弄混，先弄出一个结构图</p>
-<ul>
-<li>  cookie</li>
-<li>  session</li>
-<li>  web storage ： session storage local storage</li>
-</ul>
-<p>cookie 欢迎指出错误 我的结论机遇我的实验：</p>
-<p><strong>cookie</strong> 服务端首次创建，然后存在客户端 之后每次请求响应客户端都会携带cookie 服务端通过set-cookie可以改变cookie。 在客户端首次拿到cookie之后，客户端也可以修改。</p>
-<p>问题1: 客户端可以创建cookie吗？</p>
-<p>我的答案：不能。</p>
-<p><img src="http://chang-rui.net/wp-content/uploads/2022/04/image-4.png"></p>
-<p><img src="http://chang-rui.net/wp-content/uploads/2022/04/image-5.png"></p>
-<p>在我们服务端创建完成后就可以</p>
-<p><img src="http://chang-rui.net/wp-content/uploads/2022/04/image-6.png"></p>
-<p><strong>为什么出现 cookie</strong> ？</p>
-<p>假设我们拥有两个界面，一个登陆，一个主页，那么我们登陆之后跳转到主页，怎么知道登陆的状态呢？很显然，我们可以重新再像数据库发一次请求，来询问登陆状态。但是，这就显得多余。如果我们利用cookie，把path配置为主域名，我们就可移栽这两个页面访问到登陆时所储存的cookie，当主页重新发起请求时，cookie在请求体里面一起发到服务器，这样我们不用请求数据库就可以知道登陆状态。cookie的失效时间由expire字段实现，在页面之间的传递有path规则决定。</p>
-<p><strong>为什么出现session？</strong></p>
-<p>因为cookie一般只有4kb，太小了，并且是字符串，而且用户可见，不是很安全，那么我们的session就应运而生了。</p>
-<p>其存储在服务端，较安全，而且可以存更大一些的数据。</p>
-<p><strong>WebStorage</strong></p>
-<p>这两个都可以存比较大的数据，例如5mb</p>
-<p>local Storage 与session storage ：举一个生动的例子，你用浏览器开了一个界面，然后又新开了同一个界面，或者是你跳到了一个同源的页面，在任意一个界面中，改变了local storage中的数据，是会共享的，这是他的范围，如果跳到一个外链，也是不存在的。</p>
-<p><img src="http://chang-rui.net/wp-content/uploads/2022/04/image-9.png"></p>
-<p>Test中进行修改</p>
-<p><img src="http://chang-rui.net/wp-content/uploads/2022/04/image-10.png"></p>
-<p>原页面同步了</p>
-<p>然后你关闭之后，下次在打开，他还是存在的，这是他的存在时间。而对于session Storage而言呢，你在单独的页面修改数据是不会共享的，比如你跳到了同源的页面，数据是在的，但是不能共享，然后就是你关闭了界面，跳到新的外部界面，数据是不存在的。</p>
-<p><img src="http://chang-rui.net/wp-content/uploads/2022/04/image-7.png"></p>
-<p><img src="http://chang-rui.net/wp-content/uploads/2022/04/image-8.png"></p>
-<p>我们可以看到，注释时候，仍然是存在在localStorage中的，除非你手动removeItem才会消失</p>
-<p>值得注意的是local Storage存入对象时应该先转化为json字符串！</p>
-<p>具体代码可以参考我的github仓库 ：<a target="_blank" rel="noopener" href="https://github.com/ReeceChang0912/project_on_mac/tree/master/my_basic">project_on_mac/my_basic at master · ReeceChang0912/project_on_mac (github.com)</a></p>
+                <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
 
             </div>
 
@@ -256,8 +237,8 @@ $('.btn_click_load').click(function() {
 -->
 <script type="text/javascript">
     var disqus_config = function () {
-        this.page.url = 'http://example.com/2022/04/08/web-storage/';  // Replace PAGE_URL with your page's canonical URL variable
-        this.page.identifier = 'http://example.com/2022/04/08/web-storage/'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        this.page.url = 'http://example.com/2022/04/24/hello-world/';  // Replace PAGE_URL with your page's canonical URL variable
+        this.page.identifier = 'http://example.com/2022/04/24/hello-world/'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
     };
 </script>
 

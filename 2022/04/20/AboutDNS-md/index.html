@@ -157,43 +157,22 @@
 </nav>
 
         <div id="main" >
-            <div class ="post_page_title_img" style="height: 25rem;background-image: url(https://w.wallhaven.cc/full/5d/wallhaven-5d3297.jpg);background-position: center; background-repeat:no-repeat; background-size:cover;-moz-background-size:cover;overflow:hidden;" >
-                <a href="#" style="padding: 4rem 4rem 2rem 4rem ;"><h2 >Web Storage</h2></a>
+            <div class ="post_page_title_img" style="height: 25rem;background-image: url(https://w.wallhaven.cc/full/8x/wallhaven-8xo2x1.jpg);background-position: center; background-repeat:no-repeat; background-size:cover;-moz-background-size:cover;overflow:hidden;" >
+                <a href="#" style="padding: 4rem 4rem 2rem 4rem ;"><h2 >DNS</h2></a>
             </div>
             <!-- Post -->
             <div class="typo" style="padding: 3rem;">
-                <p>这里的内容极其容易弄混，先弄出一个结构图</p>
-<ul>
-<li>  cookie</li>
-<li>  session</li>
-<li>  web storage ： session storage local storage</li>
-</ul>
-<p>cookie 欢迎指出错误 我的结论机遇我的实验：</p>
-<p><strong>cookie</strong> 服务端首次创建，然后存在客户端 之后每次请求响应客户端都会携带cookie 服务端通过set-cookie可以改变cookie。 在客户端首次拿到cookie之后，客户端也可以修改。</p>
-<p>问题1: 客户端可以创建cookie吗？</p>
-<p>我的答案：不能。</p>
-<p><img src="http://chang-rui.net/wp-content/uploads/2022/04/image-4.png"></p>
-<p><img src="http://chang-rui.net/wp-content/uploads/2022/04/image-5.png"></p>
-<p>在我们服务端创建完成后就可以</p>
-<p><img src="http://chang-rui.net/wp-content/uploads/2022/04/image-6.png"></p>
-<p><strong>为什么出现 cookie</strong> ？</p>
-<p>假设我们拥有两个界面，一个登陆，一个主页，那么我们登陆之后跳转到主页，怎么知道登陆的状态呢？很显然，我们可以重新再像数据库发一次请求，来询问登陆状态。但是，这就显得多余。如果我们利用cookie，把path配置为主域名，我们就可移栽这两个页面访问到登陆时所储存的cookie，当主页重新发起请求时，cookie在请求体里面一起发到服务器，这样我们不用请求数据库就可以知道登陆状态。cookie的失效时间由expire字段实现，在页面之间的传递有path规则决定。</p>
-<p><strong>为什么出现session？</strong></p>
-<p>因为cookie一般只有4kb，太小了，并且是字符串，而且用户可见，不是很安全，那么我们的session就应运而生了。</p>
-<p>其存储在服务端，较安全，而且可以存更大一些的数据。</p>
-<p><strong>WebStorage</strong></p>
-<p>这两个都可以存比较大的数据，例如5mb</p>
-<p>local Storage 与session storage ：举一个生动的例子，你用浏览器开了一个界面，然后又新开了同一个界面，或者是你跳到了一个同源的页面，在任意一个界面中，改变了local storage中的数据，是会共享的，这是他的范围，如果跳到一个外链，也是不存在的。</p>
-<p><img src="http://chang-rui.net/wp-content/uploads/2022/04/image-9.png"></p>
-<p>Test中进行修改</p>
-<p><img src="http://chang-rui.net/wp-content/uploads/2022/04/image-10.png"></p>
-<p>原页面同步了</p>
-<p>然后你关闭之后，下次在打开，他还是存在的，这是他的存在时间。而对于session Storage而言呢，你在单独的页面修改数据是不会共享的，比如你跳到了同源的页面，数据是在的，但是不能共享，然后就是你关闭了界面，跳到新的外部界面，数据是不存在的。</p>
-<p><img src="http://chang-rui.net/wp-content/uploads/2022/04/image-7.png"></p>
-<p><img src="http://chang-rui.net/wp-content/uploads/2022/04/image-8.png"></p>
-<p>我们可以看到，注释时候，仍然是存在在localStorage中的，除非你手动removeItem才会消失</p>
-<p>值得注意的是local Storage存入对象时应该先转化为json字符串！</p>
-<p>具体代码可以参考我的github仓库 ：<a target="_blank" rel="noopener" href="https://github.com/ReeceChang0912/project_on_mac/tree/master/my_basic">project_on_mac/my_basic at master · ReeceChang0912/project_on_mac (github.com)</a></p>
+                <h2 id="缘起"><a href="#缘起" class="headerlink" title="缘起"></a>缘起</h2><p>我之所以会对DNS产生疑问，主要因为最近我的之前购买的服务器快要到期了，我不得不迁移我的博客，因为继续使用的费用变得十分昂贵。<br>索性有github，这个yyds，git.io轻松帮助你不知博客，后面我重新购买了一个域名来解析到gitio，但是我尝试了好久，A类地址，C类地址，都弄了半天，就是没成功，最后居然是开了https才成功。那么我这是就以已经对dns与cdn产生了很大的兴趣，之前也学习过，但是忘的差不多了，今天再次学习一下。</p>
+<h3 id="一个问题"><a href="#一个问题" class="headerlink" title="一个问题"></a>一个问题</h3><p>前端有一个经典的面试题，输入URL到页面展示的过程经历了什么？<br>这里重点说一下这个DNS的问题。<br>首先先去浏览器缓存查看（chrome），如果没有，去看本机的host文件，如果没有，再去本地的DNS服务器看，我们连接校园网都会去配置的那个东西找，如果没有，再像外部继续找，那么外部在哪？<br>对我们而言，外部就是网络运营商提供的，中国移动，中国联通等。<br>那么怎么连接到外部？<br>很简单，会通过操作系统的例如，Linux GNU glibc标准库的gethostbyname函数)，调用网卡发送UDP包去请求ip地址。</p>
+<h3 id="关于DNS服务器"><a href="#关于DNS服务器" class="headerlink" title="关于DNS服务器"></a>关于DNS服务器</h3><p>先说说域名系统，我们应该从右往左看例如：<a target="_blank" rel="noopener" href="http://www.example.com/">www.example.com</a>.<br>依次是</p>
+<ol>
+<li>根域名. </li>
+<li>顶级域名 com </li>
+<li>次级域名 example 次级域名可以在域名网站上购买</li>
+<li>主机名 又叫作三级域名 就是www</li>
+</ol>
+<p>我们查找的时候也是从上往下一层层查找，全球有13个根域名服务器，10个放在美国，一个主，9个从，其他分别英国，瑞典和日本。那么是不是说我们访问都要先访问美国的根域名服务器呢？<br>答案是不是，我们的运营商服务器就搞了一些镜像，我们访问镜像就可。</p>
+<h3 id="再说说CDN"><a href="#再说说CDN" class="headerlink" title="再说说CDN"></a>再说说CDN</h3><p> 麻省理工学院的成就之一，应用数学的教授发明了这个东西。<br> 主要思路就是部署多个从服务器，缓存源主机的东西，例如视频，html等，而且是只能的缓存，不是全部copy，比如很常用的长时间缓存。<br> 这样，一个域名可能就对应了很多个ip地址，我们首先访问CDN服务器，拿到全部的CDN列表，然后访问负载均衡服务器，确定访问的具体的分布的那一个CDN服务器，然后访问具体的分布服务器。</p>
 
             </div>
 
@@ -256,8 +235,8 @@ $('.btn_click_load').click(function() {
 -->
 <script type="text/javascript">
     var disqus_config = function () {
-        this.page.url = 'http://example.com/2022/04/08/web-storage/';  // Replace PAGE_URL with your page's canonical URL variable
-        this.page.identifier = 'http://example.com/2022/04/08/web-storage/'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        this.page.url = 'http://example.com/2022/04/20/AboutDNS-md/';  // Replace PAGE_URL with your page's canonical URL variable
+        this.page.identifier = 'http://example.com/2022/04/20/AboutDNS-md/'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
     };
 </script>
 
